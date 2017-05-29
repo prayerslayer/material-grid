@@ -1,0 +1,26 @@
+{
+  "name": "material-grid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dist": "webpack -p",
+    "dev": "parallelshell 'webpack -w' 'http-server dist'",
+    "clean-docs": "rm -rf docs",
+    "docs": "npm run dist && cp -R dist docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^0.28.3",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.28.0",
+    "http-server": "^0.10.0",
+    "node-sass": "^4.5.3",
+    "parallelshell": "^2.0.0",
+    "sass-loader": "^6.0.5",
+    "webpack": "^2.6.1"
+  }
+}

@@ -1,0 +1,111 @@
+.container, .row, [class^="col-"] {
+  box-sizing: border-box;
+}
+
+[class^="col-"]  {
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+$breakpoint-order: (xs, sm, md, lg, xl);
+
+// 480, 600, 840, 960, 1280, 1440, and 1600dp.
+$breakpoints: (
+  xs: (0px, 480px),
+  sm: (600px, 840px),
+  md: (960px),
+  lg: (1280px, 1440px, 1600px),
+  xl: (1920px)
+);
+
+$columns: (
+  xs: 4,
+  sm: 8,
+  md: 8,
+  lg: 12,
+  xl: 12
+);
+
+$gutter: (
+  xs: 16px,
+  sm: 16px,
+  md: 24px,
+  lg: 24px,
+  xl: 24px
+);
+
+.container.no-gutter {
+  padding-left: initial;
+  padding-right: initial;
+
+  .row {
+    margin-left: initial;
+    margin-right: initial;
+  }
+
+  [class^="col-"] {
+    padding-left: initial;
+    padding-right: initial;
+  }
+}
+
+@mixin make-grid($size, $columns, $gutter) {
+  .container {
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+
+  .row {
+    display: flex;
+    flex-flow: row wrap;
+    margin-left: -$gutter/2;
+    margin-right: -$gutter/2;
+  }
+
+
+  @for $i from 1 through $columns {
+    .col-#{$size}-#{$i} {
+      flex: 0 0 $i/$columns * 100%;
+      max-width: $i/$columns * 100%;
+      min-height: 1px;
+      padding-left: $gutter/2;
+      padding-right: $gutter/2;
+    }
+  }
+}
+
+@mixin default-style($size, $columns, $gutter) {
+
+  @for $i from 1 through $columns {
+
+    .col-#{$size}-#{$i} {
+      flex: 0 0 100%;
+      max-width: 100%;
+      padding-left: initial;
+      padding-right: initial;
+    }
+  }
+}
+
+@each $size, $bps in $breakpoints {
+
+  @each $breakpoint in $bps {
+    @media screen and (min-width: $breakpoint) {
+      @each $other-size, $_ in $breakpoints {
+        @if $size != $other-size {
+          @if index($breakpoint-order, $other-size) < index($breakpoint-order, $size) {
+            @include make-grid($other-size, map-get($columns, $other-size), map-get($gutter, $other-size));
+          }
+          @else {
+            @include default-style($other-size, map-get($columns, $other-size), map-get($gutter, $other-size));
+          }
+        }
+      }
+      @include make-grid($size, map-get($columns, $size), map-get($gutter, $size));
+    }
+
+
+  }
+}
