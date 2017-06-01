@@ -4,9 +4,10 @@ Responsive grid following[1] the [Material Design spec](https://material.io/guid
 
 [https://prayerslayer.github.io/material-grid](https://prayerslayer.github.io/material-grid)
 
+Size: 11.4 KB minified, 1 KB gzipped
+
 ## TODO
 
-* Classes used for reordering: offset, push, pull https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_grid.scss#L69
 * Make gutter behavior consistent
 
 ## Footnotes

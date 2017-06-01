@@ -47,6 +47,20 @@ $gutter: (
   }
 }
 
+[class^="col-"] {
+  position: relative;
+  min-height: 1px;
+  padding-left: initial;
+  padding-right: initial;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
 @mixin make-grid($size, $columns, $gutter) {
   .container {
     padding-left: $gutter;
@@ -54,33 +68,28 @@ $gutter: (
   }
 
   .row {
-    display: flex;
-    flex-flow: row wrap;
     margin-left: -$gutter/2;
     margin-right: -$gutter/2;
   }
-
 
   @for $i from 1 through $columns {
     .col-#{$size}-#{$i} {
       flex: 0 0 $i/$columns * 100%;
       max-width: $i/$columns * 100%;
-      min-height: 1px;
       padding-left: $gutter/2;
       padding-right: $gutter/2;
     }
-  }
-}
 
-@mixin default-style($size, $columns, $gutter) {
+    .offset-#{$size}-#{$i} {
+      margin-left: $i/$columns * 100%;
+    }
 
-  @for $i from 1 through $columns {
+    .push-#{$size}-#{$i} {
+      left: $i/$columns * 100%;
+    }
 
-    .col-#{$size}-#{$i} {
-      flex: 0 0 100%;
-      max-width: 100%;
-      padding-left: initial;
-      padding-right: initial;
+    .pull-#{$size}-#{$i} {
+      right: $i/$columns * 100%;
     }
   }
 }
@@ -91,9 +100,6 @@ $gutter: (
         @if $size != $other-size {
           @if index($breakpoint-order, $other-size) < index($breakpoint-order, $size) {
             @include make-grid($other-size, map-get($columns, $other-size), map-get($gutter, $other-size));
-          }
-          @else {
-            @include default-style($other-size, map-get($columns, $other-size), map-get($gutter, $other-size));
           }
         }
       }
