@@ -8,7 +8,6 @@ Responsive grid following[1] the [Material Design spec](https://material.io/guid
 
 * Classes used for reordering: offset, push, pull https://github.com/twbs/bootstrap/blob/v4-dev/scss/mixins/_grid.scss#L69
 * Make gutter behavior consistent
-* Optimize CSS size by using breakpoints more efficiently
 
 ## Footnotes
 

@@ -9,31 +9,27 @@
   }
 }
 
-$breakpoint-order: (xs, sm, md, lg, xl);
+$breakpoint-order: (xs, sm, md, lg);
 
-// 480, 600, 840, 960, 1280, 1440, and 1600dp.
 $breakpoints: (
-  xs: (0px, 480px),
-  sm: (600px, 840px),
-  md: (960px),
-  lg: (1280px, 1440px, 1600px),
-  xl: (1920px)
+  xs: 0px,
+  sm: 600px,
+  md: 960px,
+  lg: 1280px
 );
 
 $columns: (
   xs: 4,
   sm: 8,
   md: 8,
-  lg: 12,
-  xl: 12
+  lg: 12
 );
 
 $gutter: (
   xs: 16px,
   sm: 16px,
   md: 24px,
-  lg: 24px,
-  xl: 24px
+  lg: 24px
 );
 
 .container.no-gutter {
@@ -89,9 +85,7 @@ $gutter: (
   }
 }
 
-@each $size, $bps in $breakpoints {
-
-  @each $breakpoint in $bps {
+@each $size, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
       @each $other-size, $_ in $breakpoints {
         @if $size != $other-size {
@@ -105,7 +99,4 @@ $gutter: (
       }
       @include make-grid($size, map-get($columns, $size), map-get($gutter, $size));
     }
-
-
-  }
 }

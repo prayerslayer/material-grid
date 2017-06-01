@@ -2,8 +2,7 @@ const breakpoints = {
     xs: 4,
     sm: 8,
     md: 8,
-    lg: 12,
-    xl: 12,
+    lg: 12
 };
 
 function generateSize(size) {
