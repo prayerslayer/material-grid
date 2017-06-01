@@ -8,7 +8,7 @@
     "dist": "webpack -p",
     "dev": "parallelshell 'webpack -w' 'http-server dist'",
     "clean-docs": "rm -rf docs",
-    "docs": "npm run dist && cp -R dist docs"
+    "docs": "npm run clean-docs && npm run dist && cp -R dist docs"
   },
   "keywords": [],
   "author": "",

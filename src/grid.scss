@@ -94,12 +94,24 @@ $gutter: (
   }
 }
 
+@mixin default-style($size, $columns, $gutter) {
+  @for $i from 1 through $columns {
+    .col-#{$size}-#{$i} {
+      padding-left: $gutter/2;
+      padding-right: $gutter/2;
+    }
+  }
+}
+
 @each $size, $breakpoint in $breakpoints {
     @media screen and (min-width: $breakpoint) {
       @each $other-size, $_ in $breakpoints {
         @if $size != $other-size {
           @if index($breakpoint-order, $other-size) < index($breakpoint-order, $size) {
             @include make-grid($other-size, map-get($columns, $other-size), map-get($gutter, $other-size));
+          }
+          @else {
+            @include default-style($other-size, map-get($columns, $other-size), map-get($gutter, $size));
           }
         }
       }

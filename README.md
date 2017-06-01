@@ -4,11 +4,7 @@ Responsive grid following[1] the [Material Design spec](https://material.io/guid
 
 [https://prayerslayer.github.io/material-grid](https://prayerslayer.github.io/material-grid)
 
-Size: 11.4 KB minified, 1 KB gzipped
-
-## TODO
-
-* Make gutter behavior consistent
+Size: 12.1 KB minified, 1.2 KB gzipped
 
 ## Footnotes
 
