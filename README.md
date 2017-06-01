@@ -14,6 +14,7 @@ The bootstrap grid has always 12 columns, whereas the material design grid has s
 
 While we're talking about the Bootstrap grid:
 
+* Bootstrap grid is tested on many devices and browsers (I hope), this is definitely not! Use at own risk.
 * Bootstrap has `container` and `container-fluid`, this grid only `container-fluid`
 * Bootstrap has variable-width columns, this doesn't as you're not allowed to break the grid
 * Flexboy utility classes from BS like `align-self-start` should be usable here (not verified)
