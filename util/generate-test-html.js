@@ -8,7 +8,7 @@ const breakpoints = {
 function generateSize(size) {
     const cols = breakpoints[size];
     let html = `<h1>${size} <small>${cols} cols</small></h1>`;
-    html += `<div class="container">`;
+    html += `<div class="container-fluid">`;
 
     for (let i = 1; i <= cols; i++) {
         const fillColsCount = cols - i;

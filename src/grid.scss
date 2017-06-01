@@ -1,9 +1,9 @@
-.container, .row, [class^="col-"] {
+.container-fluid, .row, [class^="col-"] {
   box-sizing: border-box;
 }
 
 [class^="col-"]  {
-  .container {
+  .container-fluid {
     padding-left: 0;
     padding-right: 0;
   }
@@ -32,7 +32,7 @@ $gutter: (
   lg: 24px
 );
 
-.container.no-gutter {
+.container-fluid.no-gutter {
   padding-left: initial;
   padding-right: initial;
 
@@ -62,7 +62,7 @@ $gutter: (
 }
 
 @mixin make-grid($size, $columns, $gutter) {
-  .container {
+  .container-fluid {
     padding-left: $gutter;
     padding-right: $gutter;
   }
